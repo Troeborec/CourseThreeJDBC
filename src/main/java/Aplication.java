@@ -7,7 +7,7 @@ public class Aplication {
         final String url = "jdbc:postgresql://localhost:5432/skypro";
 
         try (final Connection connection =
-                     DriverManager.getConnection(user, password, url);
+                     DriverManager.getConnection(url, user, password);
              PreparedStatement statement =
                      connection.prepareStatement("SELECT * FROM employee FULL JOIN city ON employee.city_id = city.city_id")) {
             ResultSet resultSet = statement.executeQuery();
