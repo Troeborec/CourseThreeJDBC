@@ -7,7 +7,7 @@ public class Employee {
     private int age;
     private String city_name;
 
-    public Employee(int id, String first_name, String last_name, String gender, int age, int city) {
+    public Employee(int id, String first_name, String last_name, String gender, int age, String city_name) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;

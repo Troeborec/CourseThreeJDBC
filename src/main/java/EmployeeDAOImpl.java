@@ -74,7 +74,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String lastNameOfEmployee = resultSet.getString("last_name");
                 String genderOfEmployee = resultSet.getString("gender");
                 int ageOfEmployee = resultSet.getInt("age");
-                int cityIdOfEmployee = resultSet.getInt("city_id");
+                String cityIdOfEmployee = resultSet.getString("city_name");
 
                 employeeList.add(new Employee(idOfEmployee, firstNameOfEmployee, lastNameOfEmployee, genderOfEmployee, ageOfEmployee, cityIdOfEmployee));
             }
