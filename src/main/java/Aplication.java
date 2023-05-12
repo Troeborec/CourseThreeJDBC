@@ -8,7 +8,8 @@ public class Aplication {
         Employee employeeThree = new Employee(3, "Олег3", "Нечипоренко3", "boy", 33, "Санкт-Петербург");
         Employee employeeFour = new Employee(4, "Олег4", "Нечипоренко4", "boy", 34, "Санкт-Петербург");
 
-        employeeDAO.getEmployeeById(3);
+        //employeeDAO.getEmployeeById(3);
+        employeeDAO.getAllEmployee();
     }
 
 }
