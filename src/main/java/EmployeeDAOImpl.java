@@ -38,7 +38,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try (final Connection connection =
                      DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement =
-                     connection.prepareStatement("SELECT * FROM employee" + "LEFT JOIN city ON employee.city_id = city.city_id " + "WHERE id=?")) {
+                     connection.prepareStatement("SELECT * FROM employee" + "LEFT JOIN city ON employee.city_id = city.city_id " + "WHERE id= (?) ")) {
+            preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -54,7 +55,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                         firstNameOfEmployee, lastNameOfEmployee, genderOfEmployee, ageOfEmployee, cityIdOfEmployee);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка при установлении соедениения!");
+            e.printStackTrace();
         }
     }
 
