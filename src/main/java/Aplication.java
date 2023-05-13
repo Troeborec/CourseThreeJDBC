@@ -10,6 +10,7 @@ public class Aplication {
 
         //employeeDAO.getEmployeeById(3);
         employeeDAO.getAllEmployee();
+        employeeDAO.addEmployee(employeeOne);
     }
 
 }

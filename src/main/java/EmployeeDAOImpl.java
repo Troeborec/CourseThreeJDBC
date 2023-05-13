@@ -22,7 +22,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
             preparedStatement.setString(5, employee.getCity());
-            preparedStatement.executeUpdate();
+            // preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.executeQuery();
             System.out.println("Сотрудник добавлен");
@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         try (final Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement =
-                     connection.prepareStatement("SELECT * FROM employee" + "LEFT JOIN city ON employee.city_id = city.city_id")) {
+                     connection.prepareStatement("SELECT * FROM employee " + "LEFT JOIN city ON employee.city_id = city.city_id")) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
