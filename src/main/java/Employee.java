@@ -5,15 +5,15 @@ public class Employee {
     private String last_name;
     private String gender;
     private int age;
-    private String city_name;
+    private int city_id;
 
-    public Employee(int id, String first_name, String last_name, String gender, int age, String city_name) {
+    public Employee(int id, String first_name, String last_name, String gender, int age, int city_id) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
         this.age = age;
-        this.city_name = city_name;
+        this.city_id = city_id;
     }
 
     public int getId() {
@@ -36,8 +36,8 @@ public class Employee {
         return age;
     }
 
-    public String getCity() {
-        return city_name;
+    public int getCity() {
+        return city_id;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Employee {
                 ", last_name='" + last_name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", city=" + city_name +
+                ", city=" + city_id +
                 '}';
     }
 }

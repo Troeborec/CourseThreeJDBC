@@ -15,13 +15,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try (final Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement =
                      connection.prepareStatement("INSERT INTO employee " +
-                             "(first_name, last_name, gender, age, city_id) " +
-                             "VALUES (?,?,?,?, ?)")) {
+                             " (first_name, last_name, gender, age, city_id) " +
+                             " VALUES (?,?,?,?,?)")) {
             preparedStatement.setString(1, employee.getFirstName());
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
-            preparedStatement.setString(5, employee.getCity());
+            preparedStatement.setInt(5, employee.getCity());
             // preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -40,7 +40,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try (final Connection connection =
                      DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement =
-                     connection.prepareStatement("SELECT * FROM employee " + "LEFT JOIN city ON employee.city_id = city.city_id " + "WHERE id= (?) ")) {
+                     connection.prepareStatement("SELECT * FROM employee " + "LEFT JOIN city ON employee.city_id = city.city_id " + " WHERE id= (?) ")) {
             preparedStatement.setInt(1, id);
             System.out.println("Соединение с БД установлено!");
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         try (final Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement =
-                     connection.prepareStatement("SELECT * FROM employee " + "LEFT JOIN city ON employee.city_id = city.city_id")) {
+                     connection.prepareStatement("SELECT * FROM employee " + " LEFT JOIN city ON employee.city_id = city.city_id")) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -79,7 +79,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String lastNameOfEmployee = resultSet.getString("last_name");
                 String genderOfEmployee = resultSet.getString("gender");
                 int ageOfEmployee = resultSet.getInt("age");
-                String cityIdOfEmployee = resultSet.getString("city_name");
+                int cityIdOfEmployee = resultSet.getInt("city_id");
 
                 employeeList.add(new Employee(idOfEmployee, firstNameOfEmployee, lastNameOfEmployee, genderOfEmployee, ageOfEmployee, cityIdOfEmployee));
             }
