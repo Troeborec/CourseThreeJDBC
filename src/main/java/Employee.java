@@ -1,10 +1,24 @@
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
+    @Id
     private int id;
+
+    @Column(name = "first_name")
     private String first_name;
+    @Column(name = "last_name")
     private String last_name;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "age")
     private int age;
+    @Column(name = "city_id")
     private int city_id;
 
     public Employee(int id, String first_name, String last_name, String gender, int age, int city_id) {

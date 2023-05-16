@@ -10,8 +10,8 @@ public class Aplication {
 
        // employeeDAO.getEmployeeById(3);
         employeeDAO.getAllEmployee();
-        employeeDAO.addEmployee(employeeTwo);
-        employeeDAO.deleteEmployeeById(2);
+        //employeeDAO.addEmployee(employeeTwo);
+       // employeeDAO.deleteEmployeeById(2);
     }
 
 }
