@@ -1,14 +1,13 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 
     @Column(name = "first_name")
     private String first_name;
@@ -20,6 +19,10 @@ public class Employee {
     private int age;
     @Column(name = "city_id")
     private int city_id;
+
+    public Employee(){
+
+    }
 
     public Employee(int id, String first_name, String last_name, String gender, int age, int city_id) {
         this.id = id;
@@ -64,5 +67,8 @@ public class Employee {
                 ", age=" + age +
                 ", city=" + city_id +
                 '}';
+    }
+
+    public void setId(int id) {
     }
 }
