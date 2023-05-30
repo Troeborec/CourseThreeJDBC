@@ -12,9 +12,9 @@ public interface EmployeeDAO {
     List<Employee> getAllEmployee();
 
     //Изменение конкретного объекта Employee в базе по id.
-    void updateEmployeeById(int id, Employee employee);
+    void updateEmployeeById(Employee employee, int id);
 
 
     //Удаление конкретного объекта Employee из базы по id.
-    void deleteEmployeeById(Employee employee);
+    void deleteEmployeeById(int id);
 }
