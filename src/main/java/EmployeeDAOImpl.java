@@ -1,6 +1,4 @@
 import javax.persistence.*;
-import javax.swing.text.html.parser.Entity;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,47 +27,73 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public void addEmployee(Employee employee) {
-        EntityManager entityManager = readPersistent();
+        EntityManager entityManager = UtilEntity.createEntityManager();
+        entityManager.getTransaction().begin();
         entityManager.persist(employee);
-
         entityManager.getTransaction().commit();
         entityManager.close();
-
+        UtilEntity.closeManagerFactory();
         }
 
     @Override
-    public void getEmployeeById(int id) {
+    public Employee getEmployeeById(int id) {
 
-        EntityManager entityManager = readPersistent();
+        EntityManager entityManager = UtilEntity.createEntityManager();
+        entityManager.getTransaction().begin();
         Employee employee = entityManager.find(Employee.class, id);
+        System.out.println(employee);
         entityManager.getTransaction().commit();
         entityManager.close();
+        UtilEntity.closeManagerFactory();
+
+        return employee;
     }
 
         @Override
-    public void getAllEmployee() {
+    public List<Employee> getAllEmployee() {
         List<Employee> employeeList = new ArrayList<>();
-            EntityManager entityManager = readPersistent();
+
+            EntityManager entityManager =UtilEntity.createEntityManager();
+            entityManager.getTransaction().begin();
             String s = "SELECT e FROM Employee e";
             TypedQuery<Employee> query = entityManager.createQuery(s, Employee.class);
             List<Employee> employees = query.getResultList();
             entityManager.getTransaction().commit();
             entityManager.close();
+            UtilEntity.closeManagerFactory();
+            return employeeList;
         }
 
+
     @Override
-    public void updateEmployeeById(int id) {
+    public void updateEmployeeById(int id, Employee employee) {
+
+        EntityManager entityManager = UtilEntity.createEntityManager();
+        entityManager.getTransaction().begin();
+        Employee empForUpdate = entityManager.find(Employee.class, id);
+        empForUpdate.setFirst_name(employee.getFirstName());
+        empForUpdate.setLast_name(employee.getLastName());
+        empForUpdate.setGender(employee.getGender());
+        empForUpdate.setAge(employee.getAge());
+        empForUpdate.setId(employee.getId());
+        entityManager.merge(empForUpdate);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        UtilEntity.closeManagerFactory();
 
     }
 
     @Override
-    public void updateEmployeeById(Employee employee, int id) {
+    public void deleteEmployeeById(Employee employee) {
 
-    }
+        EntityManager entityManager = UtilEntity.createEntityManager();
+        Employee empForDelete = entityManager.find(Employee.class, employee.getId());
+        entityManager.getTransaction().begin();
+        entityManager.remove(empForDelete);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        UtilEntity.closeManagerFactory();
 
-
-    @Override
-    public void deleteEmployeeById(int id) {
 
     }
 
