@@ -14,10 +14,10 @@ public class Aplication {
 
 
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-        Employee employeeOne = new Employee(1, "Олег1", "Нечипоренко1", "boy", 31,1 );
-        Employee employeeTwo = new Employee(2, "Олег2", "Нечипоренко2", "boy", 32 ,2);
-        Employee employeeThree = new Employee(3, "Олег3", "Нечипоренко3", "boy", 33 ,3);
-        Employee employeeFour = new Employee(4, "Олег4", "Нечипоренко4", "boy", 34,4 );
+        Employee employeeOne = new Employee("Олег1", "Нечипоренко2", "boy", 31, 1 );
+        Employee employeeTwo = new Employee("Олег1", "Нечипоренко2", "boy", 32, 2 );
+        Employee employeeThree = new Employee("Олег1", "Нечипоренко2", "boy", 33, 3 );
+        Employee employeeFour = new Employee("Олег1", "Нечипоренко2", "boy", 34, 4);
 
         employeeDAO.getAllEmployee();
         employeeDAO.addEmployee(employeeOne);

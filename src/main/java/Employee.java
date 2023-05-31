@@ -6,7 +6,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
 
     @Column(name = "first_name")
@@ -24,8 +24,7 @@ public class Employee {
 
     }
 
-    public Employee(int id, String first_name, String last_name, String gender, int age,int city_id ) {
-        this.id = id;
+    public Employee(String first_name, String last_name, String gender, int age,int city_id ) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
