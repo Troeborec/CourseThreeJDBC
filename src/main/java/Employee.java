@@ -1,14 +1,19 @@
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
+@Setter
+@Getter
+@ToString
+@EqualsAndHashCode
+
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")
@@ -17,14 +22,14 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-     @Column(name = "city_id")
+    @Column(name = "city_id")
     private int city_id;
 
-    public Employee(){
+    public Employee() {
 
     }
 
-    public Employee(String first_name, String last_name, String gender, int age,int city_id ) {
+    public Employee(String first_name, String last_name, String gender, int age, int city_id) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
