@@ -1,12 +1,14 @@
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "city")
 @Setter
 @Getter
 @ToString
+@EqualsAndHashCode
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,18 +16,8 @@ public class City {
     private int city_id;
     @Column(name = "city_name")
     private String ciy_name;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cityName", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+            //Выбрал fetch = FetchType.EAGER , т.к  перечесление городов без работников не необходимо
 
-    public City(int city_id, String ciy_name) {
-        this.city_id = city_id;
-        this.ciy_name = ciy_name;
+    List<Employee> employees;
     }
-
-    public int getCity_id() {
-        return city_id;
-    }
-
-    public String getCiy_name() {
-        return ciy_name;
-    }
-}

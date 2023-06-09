@@ -21,7 +21,7 @@ public class Aplication {
 
         employeeDAO.getAllEmployee();
         employeeDAO.addEmployee(employeeOne);
-        employeeDAO.updateEmployeeById(employeeFour, 3);
+       // employeeDAO.updateEmployeeById(employeeFour, 3);
        // employeeDAO.deleteEmployeeById(1);
 
         entityManager.close();
