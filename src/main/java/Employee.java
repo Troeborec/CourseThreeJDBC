@@ -25,6 +25,9 @@ public class Employee {
     @Column(name = "city_id")
     private int city_id;
 
+    @ManyToOne
+    private City city;
+
     public Employee() {
 
     }
